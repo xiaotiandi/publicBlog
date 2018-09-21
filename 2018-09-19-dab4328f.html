@@ -120,18 +120,18 @@
 
 
 
-  <meta name="description" content="本文主要介绍如何在Hexo中插入自己博客或post的链接、Markdown文件、代码文件、图片、视频等等。">
-<meta name="keywords" content="Hexo,插入自己博客或post的链接, 插入Markdown文件, 插入代码文件, 插入图片， 插入视频, 搭建个人博客">
+  <meta name="description" content="本文主要介绍如何在Hexo中实现首行缩进和高亮代码块缩进等。">
+<meta name="keywords" content="Hexo,首行缩进, 缩进, 高亮代码块缩进, 搭建个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo博客配置-插入各类文件">
+<meta property="og:title" content="hexo博客配置-添加首行缩进和高亮代码块缩进">
 <meta property="og:url" content="http://localhost:4000/publicBlog/2018-09-19-dab4328f.html">
 <meta property="og:site_name" content="小天地">
-<meta property="og:description" content="本文主要介绍如何在Hexo中插入自己博客或post的链接、Markdown文件、代码文件、图片、视频等等。">
+<meta property="og:description" content="本文主要介绍如何在Hexo中实现首行缩进和高亮代码块缩进等。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-19T13:44:53.974Z">
+<meta property="og:updated_time" content="2018-09-20T12:54:18.158Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo博客配置-插入各类文件">
-<meta name="twitter:description" content="本文主要介绍如何在Hexo中插入自己博客或post的链接、Markdown文件、代码文件、图片、视频等等。">
+<meta name="twitter:title" content="hexo博客配置-添加首行缩进和高亮代码块缩进">
+<meta name="twitter:description" content="本文主要介绍如何在Hexo中实现首行缩进和高亮代码块缩进等。">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>hexo博客配置-插入各类文件 | 小天地</title>
+  <title>hexo博客配置-添加首行缩进和高亮代码块缩进 | 小天地</title>
   
 
 
@@ -395,7 +395,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo博客配置-插入各类文件
+          <h1 class="post-title" itemprop="name headline">hexo博客配置-添加首行缩进和高亮代码块缩进
               
             
           </h1>
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="Created: 2018-09-19 12:00:00 / Modified: 21:44:53" itemprop="dateCreated datePublished" datetime="2018-09-19T12:00:00+08:00">2018-09-19</time>
+              <time title="Created: 2018-09-19 12:00:00" itemprop="dateCreated datePublished" datetime="2018-09-19T12:00:00+08:00">2018-09-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-20 20:54:18" itemprop="dateModified" datetime="2018-09-20T20:54:18+08:00">2018-09-20</time>
               
             
           </span>
@@ -477,7 +489,7 @@
           
 
           
-              <div class="post-description">本文主要介绍如何在Hexo中插入自己博客或post的链接、Markdown文件、代码文件、图片、视频等等。</div>
+              <div class="post-description">本文主要介绍如何在Hexo中实现首行缩进和高亮代码块缩进等。</div>
           
 
         </div>
@@ -496,29 +508,10 @@
         <blockquote>
 <p>本文所用的架构或思路参考该文：<a href="/publicBlog/2018-08-17-f4bcb518.html" title="hexo博客配置-主题管理与配置">hexo博客配置-主题管理与配置</a></p>
 </blockquote>
-<h2 id="插入自己的博客或post的链接"><a class="markdownIt-Anchor" href="#插入自己的博客或post的链接"></a> 插入自己的博客或post的链接</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_path slug %&#125;</span><br><span class="line">&#123;% post_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
-<p><code>post_path hello-world</code>的方式得到:<code>/2018-08-15-16107.html</code></p>
-<p><code>post_link hello-world 世界你好！</code>的效果是:<code><a href="/publicBlog/2018-08-15-16107.html" title="世界你好！">世界你好！</a></code></p>
-<p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p>
-<h2 id="插入代码文件"><a class="markdownIt-Anchor" href="#插入代码文件"></a> 插入代码文件</h2>
-<p>先修改总的<code>_config.yml</code></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">code_dir:</span> <span class="string">./</span> <span class="comment">#表示从source目录开始</span></span><br></pre></td></tr></table></figure>
-<p>然后在要插入代码的md文件里相对<code>source</code>目录写文件路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p>
-<h2 id="插入markdown文件"><a class="markdownIt-Anchor" href="#插入markdown文件"></a> 插入markdown文件</h2>
-<p>安装<code>hexo-include-markdown</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-include-markdown --save</span><br></pre></td></tr></table></figure>
-<p>在总的<code>_config.yml</code>里添加</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">include_markdown:</span></span><br><span class="line"><span class="attr">  dir:</span> <span class="string">source/</span>   <span class="comment"># Base directory of template markdown</span></span><br><span class="line">  <span class="string">verbose</span> <span class="string">:</span> <span class="literal">true</span>          <span class="comment"># If you want to check the path of markdown that use &lt;!-- md --&gt; tag , please set the true.</span></span><br></pre></td></tr></table></figure>
-<p>在md文件里添加相对于<code>source</code>的路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- md path/to/template.md --&gt;</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/tea3/hexo-include-markdown" target="_blank" rel="noopener">参考:hexo-include-markdown</a></p>
-<h2 id="插入其他文件"><a class="markdownIt-Anchor" href="#插入其他文件"></a> 插入其他文件</h2>
-<p>插入视频、图片等等，网上可收集的实在多，不赘述。归根结底，要么写Markdown语法，要么参考官网添加tag的方式，即如下网址：</p>
-<p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">hexo-tag-plugins英文说明</a></p>
-<p><a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="noopener">hexo-tag-plugins中文说明</a></p>
+<h2 id="添加首行缩进和高亮代码块的缩进"><a class="markdownIt-Anchor" href="#添加首行缩进和高亮代码块的缩进"></a> 添加首行缩进和高亮代码块的缩进</h2>
+<p>修改主题目录下的<code>source/css/_custom/custom.styl</code></p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">1em</span>; &#125;</span><br><span class="line"><span class="selector-class">.post-body</span> li&gt;<span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">0em</span>; &#125;</span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">div</span><span class="selector-class">.highlight-wrap</span> &#123; <span class="attribute">margin-left</span>: <span class="number">2em</span>; <span class="attribute">margin-right</span>: <span class="number">2em</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/iissnan/hexo-theme-next/issues/680" target="_blank" rel="noopener">参考:建议加入文字首行缩进</a></p>
 
       
     </div>
@@ -569,7 +562,7 @@
     <strong>Post author:  </strong>ledong</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://localhost:4000/publicBlog/2018-09-19-dab4328f.html" title="hexo博客配置-插入各类文件">http://localhost:4000/publicBlog/2018-09-19-dab4328f.html</a>
+    <a href="http://localhost:4000/publicBlog/2018-09-19-dab4328f.html" title="hexo博客配置-添加首行缩进和高亮代码块缩进">http://localhost:4000/publicBlog/2018-09-19-dab4328f.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.作者拥有版权，转载请注明作者及出处。</li>
@@ -588,7 +581,7 @@
           
             <a href="/publicBlog/tags/个人博客/" rel="tag"># 个人博客</a>
           
-            <a href="/publicBlog/tags/Markdown/" rel="tag"># Markdown</a>
+            <a href="/publicBlog/tags/文本风格/" rel="tag"># 文本风格</a>
           
         </div>
       
@@ -601,8 +594,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/publicBlog/2018-08-17-f4bcb518.html" rel="next" title="hexo博客配置-主题管理与配置">
-                <i class="fa fa-chevron-left"></i> hexo博客配置-主题管理与配置
+              <a href="/publicBlog/2018-09-19-1985df3b.html" rel="next" title="hexo博客配置-代码块折叠">
+                <i class="fa fa-chevron-left"></i> hexo博客配置-代码块折叠
               </a>
             
           </div>
@@ -611,8 +604,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/publicBlog/2018-09-19-1985df3b.html" rel="prev" title="hexo博客配置-代码块折叠">
-                hexo博客配置-代码块折叠 <i class="fa fa-chevron-right"></i>
+              <a href="/publicBlog/2018-09-19-dab4328f.html" rel="prev" title="hexo博客配置-插入各类文件">
+                hexo博客配置-插入各类文件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -822,7 +815,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入自己的博客或post的链接"><span class="nav-number">1.</span> <span class="nav-text"> 插入自己的博客或post的链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入代码文件"><span class="nav-number">2.</span> <span class="nav-text"> 插入代码文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入markdown文件"><span class="nav-number">3.</span> <span class="nav-text"> 插入markdown文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入其他文件"><span class="nav-number">4.</span> <span class="nav-text"> 插入其他文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加首行缩进和高亮代码块的缩进"><span class="nav-number">1.</span> <span class="nav-text"> 添加首行缩进和高亮代码块的缩进</span></a></li></ol></div>
             
 
           </div>

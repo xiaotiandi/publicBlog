@@ -79,13 +79,6 @@
   </url>
   
   <url>
-    <loc>http://localhost:4000/publicBlog/about/index.html</loc>
-    
-    <lastmod>2018-08-20T07:07:17.631Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://localhost:4000/publicBlog/categories/index.html</loc>
     
     <lastmod>2018-08-20T07:07:17.631Z</lastmod>
@@ -101,6 +94,13 @@
   
   <url>
     <loc>http://localhost:4000/publicBlog/tags/index.html</loc>
+    
+    <lastmod>2018-08-20T07:07:17.631Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/publicBlog/about/index.html</loc>
     
     <lastmod>2018-08-20T07:07:17.631Z</lastmod>
     

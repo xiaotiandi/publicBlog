@@ -50,6 +50,36 @@
   </entry>
   
   <entry>
+    <title>hexo博客配置-自建标签Bug解决方案</title>
+    <link href="http://localhost:4000/publicBlog/2018-09-20-dd56df28.html"/>
+    <id>http://localhost:4000/publicBlog/2018-09-20-dd56df28.html</id>
+    <published>2018-09-20T04:00:00.000Z</published>
+    <updated>2018-09-20T02:13:44.978Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>本文所用的架构或思路参考该文：<a href="/publicBlog/2018-08-17-f4bcb518.html" title="hexo博客配置-主题管理与配置">hexo博客配置-主题管理与配置</a></p></blockquote><h2 id="修复自建tag里写代码块渲染成undefined的问题"><a class="markdownIt-Anchor" href="#修复自建tag里写代码块渲染成undefined的问题"></a> 修复自建tag里写代码块，渲染成undefined的问题</h2><p>只需添加文件<code>hexo-theme-next/scripts/custom/debugCustom.js</code>如下</p><figure class="highlight js"><figcaption><span>debugCustom.js</span><a href="/publicBlog/./../themes/hexo-theme-next/scripts/custom/debugCustom.js">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ledong修复自建tag里写 ```代码块```，渲染成 undefined 的问题: </span></span><br><span class="line"><span class="comment">// https://www.oyohyee.com/post/Note/hexo_tag/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  @haohuawu</span></span><br><span class="line"><span class="comment">  修复 Nunjucks 的 tag 里写 ```代码块```，最终都会渲染成 undefined 的问题</span></span><br><span class="line"><span class="comment">  https://github.com/hexojs/hexo/issues/2400</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">const</span> rEscapeContent = <span class="regexp">/&lt;escape(?:[^&gt;]*)&gt;([\s\S]*?)&lt;\/escape&gt;/g</span>;</span><br><span class="line"><span class="keyword">const</span> placeholder = <span class="string">'\uFFFD'</span>;</span><br><span class="line"><span class="keyword">const</span> rPlaceholder = <span class="regexp">/(?:&lt;|&amp;lt;)\!--\uFFFD(\d+)--(?:&gt;|&amp;gt;)/g</span>;</span><br><span class="line"><span class="keyword">const</span> cache = [];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">escapeContent</span>(<span class="params">str</span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;!--'</span> + placeholder + (cache.push(str) - <span class="number">1</span>) + <span class="string">'--&gt;'</span>;</span><br><span class="line">}</span><br><span class="line">hexo.extend.filter.register(<span class="string">'before_post_render'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</span><br><span class="line">  data.content = data.content.replace(rEscapeContent, <span class="function"><span class="keyword">function</span>(<span class="params">match, content</span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> escapeContent(content);</span><br><span class="line">  });</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">});</span><br><span class="line">hexo.extend.filter.register(<span class="string">'after_post_render'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</span><br><span class="line">  data.content = data.content.replace(rPlaceholder, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> cache[<span class="built_in">arguments</span>[<span class="number">1</span>]];</span><br><span class="line">  });</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">});</span><br></pre></td></tr></table></figure><h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2><p><a href="https://www.cnblogs.com/woshimrf/p/hexo-fold-block.html" target="_blank" rel="noopener">参考1：Hexo添加代码块折叠</a></p><p><a href="https://www.oyohyee.com/post/Note/hexo_tag/" target="_blank" rel="noopener">参考2：Hexo自建标签渲染代码段Bug解决方案</a></p>]]></content>
+    
+    <summary type="html">
+    
+      本文主要介绍如何在Hexo中解决自建标签渲染代码段Bug的问题。
+    
+    </summary>
+    
+      <category term="技术构架" scheme="http://localhost:4000/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
+    
+      <category term="个人博客" scheme="http://localhost:4000/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="http://localhost:4000/publicBlog/tags/Hexo/"/>
+    
+      <category term="技术构架" scheme="http://localhost:4000/publicBlog/tags/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
+    
+      <category term="个人博客" scheme="http://localhost:4000/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="代码风格" scheme="http://localhost:4000/publicBlog/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo博客配置-总览</title>
     <link href="http://localhost:4000/publicBlog/2018-09-20-f55aca41.html"/>
     <id>http://localhost:4000/publicBlog/2018-09-20-f55aca41.html</id>
@@ -116,36 +146,6 @@
   </entry>
   
   <entry>
-    <title>hexo博客配置-自建标签Bug解决方案</title>
-    <link href="http://localhost:4000/publicBlog/2018-09-20-dd56df28.html"/>
-    <id>http://localhost:4000/publicBlog/2018-09-20-dd56df28.html</id>
-    <published>2018-09-20T04:00:00.000Z</published>
-    <updated>2018-09-20T02:13:44.978Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>本文所用的架构或思路参考该文：<a href="/publicBlog/2018-08-17-f4bcb518.html" title="hexo博客配置-主题管理与配置">hexo博客配置-主题管理与配置</a></p></blockquote><h2 id="修复自建tag里写代码块渲染成undefined的问题"><a class="markdownIt-Anchor" href="#修复自建tag里写代码块渲染成undefined的问题"></a> 修复自建tag里写代码块，渲染成undefined的问题</h2><p>只需添加文件<code>hexo-theme-next/scripts/custom/debugCustom.js</code>如下</p><figure class="highlight js"><figcaption><span>debugCustom.js</span><a href="/publicBlog/./../themes/hexo-theme-next/scripts/custom/debugCustom.js">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ledong修复自建tag里写 ```代码块```，渲染成 undefined 的问题: </span></span><br><span class="line"><span class="comment">// https://www.oyohyee.com/post/Note/hexo_tag/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  @haohuawu</span></span><br><span class="line"><span class="comment">  修复 Nunjucks 的 tag 里写 ```代码块```，最终都会渲染成 undefined 的问题</span></span><br><span class="line"><span class="comment">  https://github.com/hexojs/hexo/issues/2400</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">const</span> rEscapeContent = <span class="regexp">/&lt;escape(?:[^&gt;]*)&gt;([\s\S]*?)&lt;\/escape&gt;/g</span>;</span><br><span class="line"><span class="keyword">const</span> placeholder = <span class="string">'\uFFFD'</span>;</span><br><span class="line"><span class="keyword">const</span> rPlaceholder = <span class="regexp">/(?:&lt;|&amp;lt;)\!--\uFFFD(\d+)--(?:&gt;|&amp;gt;)/g</span>;</span><br><span class="line"><span class="keyword">const</span> cache = [];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">escapeContent</span>(<span class="params">str</span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;!--'</span> + placeholder + (cache.push(str) - <span class="number">1</span>) + <span class="string">'--&gt;'</span>;</span><br><span class="line">}</span><br><span class="line">hexo.extend.filter.register(<span class="string">'before_post_render'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</span><br><span class="line">  data.content = data.content.replace(rEscapeContent, <span class="function"><span class="keyword">function</span>(<span class="params">match, content</span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> escapeContent(content);</span><br><span class="line">  });</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">});</span><br><span class="line">hexo.extend.filter.register(<span class="string">'after_post_render'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</span><br><span class="line">  data.content = data.content.replace(rPlaceholder, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> cache[<span class="built_in">arguments</span>[<span class="number">1</span>]];</span><br><span class="line">  });</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">});</span><br></pre></td></tr></table></figure><h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2><p><a href="https://www.cnblogs.com/woshimrf/p/hexo-fold-block.html" target="_blank" rel="noopener">参考1：Hexo添加代码块折叠</a></p><p><a href="https://www.oyohyee.com/post/Note/hexo_tag/" target="_blank" rel="noopener">参考2：Hexo自建标签渲染代码段Bug解决方案</a></p>]]></content>
-    
-    <summary type="html">
-    
-      本文主要介绍如何在Hexo中解决自建标签渲染代码段Bug的问题。
-    
-    </summary>
-    
-      <category term="技术构架" scheme="http://localhost:4000/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
-    
-      <category term="个人博客" scheme="http://localhost:4000/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="Hexo" scheme="http://localhost:4000/publicBlog/tags/Hexo/"/>
-    
-      <category term="技术构架" scheme="http://localhost:4000/publicBlog/tags/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
-    
-      <category term="个人博客" scheme="http://localhost:4000/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="代码风格" scheme="http://localhost:4000/publicBlog/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Markdown使用技巧</title>
     <link href="http://localhost:4000/publicBlog/2018-09-19-115f9f7.html"/>
     <id>http://localhost:4000/publicBlog/2018-09-19-115f9f7.html</id>
@@ -162,6 +162,36 @@
     
       <category term="软件使用" scheme="http://localhost:4000/publicBlog/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
     
+    
+      <category term="Markdown" scheme="http://localhost:4000/publicBlog/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客配置-插入各类文件</title>
+    <link href="http://localhost:4000/publicBlog/2018-09-19-dab4328f.html"/>
+    <id>http://localhost:4000/publicBlog/2018-09-19-dab4328f.html</id>
+    <published>2018-09-19T04:00:00.000Z</published>
+    <updated>2018-09-19T13:44:53.974Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>本文所用的架构或思路参考该文：<a href="/publicBlog/2018-08-17-f4bcb518.html" title="hexo博客配置-主题管理与配置">hexo博客配置-主题管理与配置</a></p></blockquote><h2 id="插入自己的博客或post的链接"><a class="markdownIt-Anchor" href="#插入自己的博客或post的链接"></a> 插入自己的博客或post的链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_path slug %&#125;</span><br><span class="line">&#123;% post_link slug [title] %&#125;</span><br></pre></td></tr></table></figure><p><code>post_path hello-world</code>的方式得到:<code>/2018-08-15-16107.html</code></p><p><code>post_link hello-world 世界你好！</code>的效果是:<code><a href="/publicBlog/2018-08-15-16107.html" title="世界你好！">世界你好！</a></code></p><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p><h2 id="插入代码文件"><a class="markdownIt-Anchor" href="#插入代码文件"></a> 插入代码文件</h2><p>先修改总的<code>_config.yml</code></p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">code_dir:</span> <span class="string">./</span> <span class="comment">#表示从source目录开始</span></span><br></pre></td></tr></table></figure><p>然后在要插入代码的md文件里相对<code>source</code>目录写文件路径</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</span><br></pre></td></tr></table></figure><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p><h2 id="插入markdown文件"><a class="markdownIt-Anchor" href="#插入markdown文件"></a> 插入markdown文件</h2><p>安装<code>hexo-include-markdown</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-include-markdown --save</span><br></pre></td></tr></table></figure><p>在总的<code>_config.yml</code>里添加</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">include_markdown:</span></span><br><span class="line"><span class="attr">  dir:</span> <span class="string">source/</span>   <span class="comment"># Base directory of template markdown</span></span><br><span class="line">  <span class="string">verbose</span> <span class="string">:</span> <span class="literal">true</span>          <span class="comment"># If you want to check the path of markdown that use &lt;!-- md --&gt; tag , please set the true.</span></span><br></pre></td></tr></table></figure><p>在md文件里添加相对于<code>source</code>的路径</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- md path/to/template.md --&gt;</span><br></pre></td></tr></table></figure><p><a href="https://github.com/tea3/hexo-include-markdown" target="_blank" rel="noopener">参考:hexo-include-markdown</a></p><h2 id="插入其他文件"><a class="markdownIt-Anchor" href="#插入其他文件"></a> 插入其他文件</h2><p>插入视频、图片等等，网上可收集的实在多，不赘述。归根结底，要么写Markdown语法，要么参考官网添加tag的方式，即如下网址：</p><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">hexo-tag-plugins英文说明</a></p><p><a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="noopener">hexo-tag-plugins中文说明</a></p>]]></content>
+    
+    <summary type="html">
+    
+      本文主要介绍如何在Hexo中插入自己博客或post的链接、Markdown文件、代码文件、图片、视频等等。
+    
+    </summary>
+    
+      <category term="技术构架" scheme="http://localhost:4000/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
+    
+      <category term="个人博客" scheme="http://localhost:4000/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="http://localhost:4000/publicBlog/tags/Hexo/"/>
+    
+      <category term="技术构架" scheme="http://localhost:4000/publicBlog/tags/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
+    
+      <category term="个人博客" scheme="http://localhost:4000/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Markdown" scheme="http://localhost:4000/publicBlog/tags/Markdown/"/>
     
@@ -224,36 +254,6 @@
       <category term="个人博客" scheme="http://localhost:4000/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="代码风格" scheme="http://localhost:4000/publicBlog/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo博客配置-插入各类文件</title>
-    <link href="http://localhost:4000/publicBlog/2018-09-19-dab4328f.html"/>
-    <id>http://localhost:4000/publicBlog/2018-09-19-dab4328f.html</id>
-    <published>2018-09-19T04:00:00.000Z</published>
-    <updated>2018-09-19T13:44:53.974Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>本文所用的架构或思路参考该文：<a href="/publicBlog/2018-08-17-f4bcb518.html" title="hexo博客配置-主题管理与配置">hexo博客配置-主题管理与配置</a></p></blockquote><h2 id="插入自己的博客或post的链接"><a class="markdownIt-Anchor" href="#插入自己的博客或post的链接"></a> 插入自己的博客或post的链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_path slug %&#125;</span><br><span class="line">&#123;% post_link slug [title] %&#125;</span><br></pre></td></tr></table></figure><p><code>post_path hello-world</code>的方式得到:<code>/2018-08-15-16107.html</code></p><p><code>post_link hello-world 世界你好！</code>的效果是:<code><a href="/publicBlog/2018-08-15-16107.html" title="世界你好！">世界你好！</a></code></p><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p><h2 id="插入代码文件"><a class="markdownIt-Anchor" href="#插入代码文件"></a> 插入代码文件</h2><p>先修改总的<code>_config.yml</code></p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">code_dir:</span> <span class="string">./</span> <span class="comment">#表示从source目录开始</span></span><br></pre></td></tr></table></figure><p>然后在要插入代码的md文件里相对<code>source</code>目录写文件路径</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</span><br></pre></td></tr></table></figure><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p><h2 id="插入markdown文件"><a class="markdownIt-Anchor" href="#插入markdown文件"></a> 插入markdown文件</h2><p>安装<code>hexo-include-markdown</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-include-markdown --save</span><br></pre></td></tr></table></figure><p>在总的<code>_config.yml</code>里添加</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">include_markdown:</span></span><br><span class="line"><span class="attr">  dir:</span> <span class="string">source/</span>   <span class="comment"># Base directory of template markdown</span></span><br><span class="line">  <span class="string">verbose</span> <span class="string">:</span> <span class="literal">true</span>          <span class="comment"># If you want to check the path of markdown that use &lt;!-- md --&gt; tag , please set the true.</span></span><br></pre></td></tr></table></figure><p>在md文件里添加相对于<code>source</code>的路径</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- md path/to/template.md --&gt;</span><br></pre></td></tr></table></figure><p><a href="https://github.com/tea3/hexo-include-markdown" target="_blank" rel="noopener">参考:hexo-include-markdown</a></p><h2 id="插入其他文件"><a class="markdownIt-Anchor" href="#插入其他文件"></a> 插入其他文件</h2><p>插入视频、图片等等，网上可收集的实在多，不赘述。归根结底，要么写Markdown语法，要么参考官网添加tag的方式，即如下网址：</p><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">hexo-tag-plugins英文说明</a></p><p><a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="noopener">hexo-tag-plugins中文说明</a></p>]]></content>
-    
-    <summary type="html">
-    
-      本文主要介绍如何在Hexo中插入自己博客或post的链接、Markdown文件、代码文件、图片、视频等等。
-    
-    </summary>
-    
-      <category term="技术构架" scheme="http://localhost:4000/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
-    
-      <category term="个人博客" scheme="http://localhost:4000/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="Hexo" scheme="http://localhost:4000/publicBlog/tags/Hexo/"/>
-    
-      <category term="技术构架" scheme="http://localhost:4000/publicBlog/tags/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
-    
-      <category term="个人博客" scheme="http://localhost:4000/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="Markdown" scheme="http://localhost:4000/publicBlog/tags/Markdown/"/>
     
   </entry>
   
@@ -371,11 +371,11 @@
     
       <category term="coding" scheme="http://localhost:4000/publicBlog/tags/coding/"/>
     
-      <category term="想法" scheme="http://localhost:4000/publicBlog/tags/%E6%83%B3%E6%B3%95/"/>
-    
       <category term="next" scheme="http://localhost:4000/publicBlog/tags/next/"/>
     
       <category term="为什么" scheme="http://localhost:4000/publicBlog/tags/%E4%B8%BA%E4%BB%80%E4%B9%88/"/>
+    
+      <category term="想法" scheme="http://localhost:4000/publicBlog/tags/%E6%83%B3%E6%B3%95/"/>
     
   </entry>
   
