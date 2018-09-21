@@ -168,36 +168,6 @@
   </entry>
   
   <entry>
-    <title>hexo博客配置-添加首行缩进和高亮代码块缩进</title>
-    <link href="http://xiaotiandi.coding.me/publicBlog/2018-09-19-dab4328f.html"/>
-    <id>http://xiaotiandi.coding.me/publicBlog/2018-09-19-dab4328f.html</id>
-    <published>2018-09-19T04:00:00.000Z</published>
-    <updated>2018-09-20T12:54:18.158Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>本文所用的架构或思路参考该文：<a href="/publicBlog/2018-08-17-f4bcb518.html" title="hexo博客配置-主题管理与配置">hexo博客配置-主题管理与配置</a></p></blockquote><h2 id="添加首行缩进和高亮代码块的缩进"><a class="markdownIt-Anchor" href="#添加首行缩进和高亮代码块的缩进"></a> 添加首行缩进和高亮代码块的缩进</h2><p>修改主题目录下的<code>source/css/_custom/custom.styl</code></p><figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">1em</span>; &#125;</span><br><span class="line"><span class="selector-class">.post-body</span> li&gt;<span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">0em</span>; &#125;</span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">div</span><span class="selector-class">.highlight-wrap</span> &#123; <span class="attribute">margin-left</span>: <span class="number">2em</span>; <span class="attribute">margin-right</span>: <span class="number">2em</span>;&#125;</span><br></pre></td></tr></table></figure><p><a href="https://github.com/iissnan/hexo-theme-next/issues/680" target="_blank" rel="noopener">参考:建议加入文字首行缩进</a></p>]]></content>
-    
-    <summary type="html">
-    
-      本文主要介绍如何在Hexo中实现首行缩进和高亮代码块缩进等。
-    
-    </summary>
-    
-      <category term="技术构架" scheme="http://xiaotiandi.coding.me/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
-    
-      <category term="个人博客" scheme="http://xiaotiandi.coding.me/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="Hexo" scheme="http://xiaotiandi.coding.me/publicBlog/tags/Hexo/"/>
-    
-      <category term="技术构架" scheme="http://xiaotiandi.coding.me/publicBlog/tags/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
-    
-      <category term="个人博客" scheme="http://xiaotiandi.coding.me/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="文本风格" scheme="http://xiaotiandi.coding.me/publicBlog/tags/%E6%96%87%E6%9C%AC%E9%A3%8E%E6%A0%BC/"/>
-    
-  </entry>
-  
-  <entry>
     <title>hexo博客配置-代码块折叠</title>
     <link href="http://xiaotiandi.coding.me/publicBlog/2018-09-19-1985df3b.html"/>
     <id>http://xiaotiandi.coding.me/publicBlog/2018-09-19-1985df3b.html</id>
@@ -224,6 +194,36 @@
       <category term="个人博客" scheme="http://xiaotiandi.coding.me/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="代码风格" scheme="http://xiaotiandi.coding.me/publicBlog/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客配置-添加首行缩进和高亮代码块缩进</title>
+    <link href="http://xiaotiandi.coding.me/publicBlog/2018-09-19-dab4328f.html"/>
+    <id>http://xiaotiandi.coding.me/publicBlog/2018-09-19-dab4328f.html</id>
+    <published>2018-09-19T04:00:00.000Z</published>
+    <updated>2018-09-20T12:54:18.158Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>本文所用的架构或思路参考该文：<a href="/publicBlog/2018-08-17-f4bcb518.html" title="hexo博客配置-主题管理与配置">hexo博客配置-主题管理与配置</a></p></blockquote><h2 id="添加首行缩进和高亮代码块的缩进"><a class="markdownIt-Anchor" href="#添加首行缩进和高亮代码块的缩进"></a> 添加首行缩进和高亮代码块的缩进</h2><p>修改主题目录下的<code>source/css/_custom/custom.styl</code></p><figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">1em</span>; &#125;</span><br><span class="line"><span class="selector-class">.post-body</span> li&gt;<span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">0em</span>; &#125;</span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">div</span><span class="selector-class">.highlight-wrap</span> &#123; <span class="attribute">margin-left</span>: <span class="number">2em</span>; <span class="attribute">margin-right</span>: <span class="number">2em</span>;&#125;</span><br></pre></td></tr></table></figure><p><a href="https://github.com/iissnan/hexo-theme-next/issues/680" target="_blank" rel="noopener">参考:建议加入文字首行缩进</a></p>]]></content>
+    
+    <summary type="html">
+    
+      本文主要介绍如何在Hexo中实现首行缩进和高亮代码块缩进等。
+    
+    </summary>
+    
+      <category term="技术构架" scheme="http://xiaotiandi.coding.me/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
+    
+      <category term="个人博客" scheme="http://xiaotiandi.coding.me/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="http://xiaotiandi.coding.me/publicBlog/tags/Hexo/"/>
+    
+      <category term="技术构架" scheme="http://xiaotiandi.coding.me/publicBlog/tags/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
+    
+      <category term="个人博客" scheme="http://xiaotiandi.coding.me/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="文本风格" scheme="http://xiaotiandi.coding.me/publicBlog/tags/%E6%96%87%E6%9C%AC%E9%A3%8E%E6%A0%BC/"/>
     
   </entry>
   
