@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="小天地">
 <meta property="og:description" content="总体思路   原则上，Hexo的运行环境与博客目录分离。   具体来讲，用Docker方式安Hexo，配置Docker里的git环境并建立与coding的链接；在本机建立博客目录，并配置主题、写博客；最后，运行，可配置快捷方式（本文是Linux系统，在.bashrc添加），运行博客系统或者发布博客。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-21T01:43:47.991Z">
+<meta property="og:updated_time" content="2018-09-21T09:23:01.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客搭建-用hexo-coding-next搭建个人博客">
 <meta name="twitter:description" content="总体思路   原则上，Hexo的运行环境与博客目录分离。   具体来讲，用Docker方式安Hexo，配置Docker里的git环境并建立与coding的链接；在本机建立博客目录，并配置主题、写博客；最后，运行，可配置快捷方式（本文是Linux系统，在.bashrc添加），运行博客系统或者发布博客。">
@@ -441,7 +441,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-09-21 09:43:47" itemprop="dateModified" datetime="2018-09-21T09:43:47+08:00">2018-09-21</time>
+                <time title="Modified: 2018-09-21 17:23:01" itemprop="dateModified" datetime="2018-09-21T17:23:01+08:00">2018-09-21</time>
               
             
           </span>
@@ -540,8 +540,8 @@
 <h2 id="使用git管理hexo"><a class="markdownIt-Anchor" href="#使用git管理hexo"></a> 使用git管理Hexo</h2>
 <p>一开始的<code>dockerfile</code>代码中，因为该docker是第一次用git，因此<code>dockerfile</code>里一定要运行如下命令(第二条可不运行)：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email <span class="string">"your@email"</span></span><br><span class="line">git config --global user.name <span class="string">"yourname"</span></span><br></pre></td></tr></table></figure>
-<p>在coding上导入公钥<code>/root/.ssh/id_rsa.pub</code>后，测试是否成功：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@git.coding.net</span><br></pre></td></tr></table></figure>
+<p>在coding上导入公钥<code>/root/.ssh/id_rsa.pub</code>后，测试是否成功（如果后面使用过程中出现连接错误，这个测试可以解决问题）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@git.coding.net</span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <p>接着在coding上注册一个项目<code>yourblog</code>，获取链接<code>git@git.coding.net:youname/yourblog.git</code></p>
 <p>之后，在主目录的<code>_config.yml</code>添加如下代码。注意有坑，主目录下<code>_config.yml</code>在配置deploy时要忽略掉.deploy_git文件夹，不然每次部署该目录由于递归存入会滚雪球增大。</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  - type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    repository:</span> <span class="string">git@git.coding.net:youname/yourblog.git</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  - type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    repository:</span> <span class="string">git@git.coding.net:youname/yourblog.git</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">    extend_dirs:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">    ignore_hidden:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    ignore_pattern:</span></span><br><span class="line"><span class="attr">      public:</span> <span class="string">.</span></span><br><span class="line">      <span class="string">/:</span> <span class="string">.deploy_git</span></span><br></pre></td></tr></table></figure>
