@@ -329,36 +329,6 @@
   </entry>
   
   <entry>
-    <title>hexo博客配置-插入各类文件</title>
-    <link href="https://xiaotiandi.github.io/publicBlog/2018-09-19-dab4328f.html"/>
-    <id>https://xiaotiandi.github.io/publicBlog/2018-09-19-dab4328f.html</id>
-    <published>2018-09-19T04:00:00.000Z</published>
-    <updated>2018-09-19T13:44:53.974Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>本文所用的架构或思路参考该文：<a href="/publicBlog/2018-08-17-f4bcb518.html" title="hexo博客配置-主题管理与配置">hexo博客配置-主题管理与配置</a></p></blockquote><h2 id="插入自己的博客或post的链接"><a class="markdownIt-Anchor" href="#插入自己的博客或post的链接"></a> 插入自己的博客或post的链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_path slug %&#125;</span><br><span class="line">&#123;% post_link slug [title] %&#125;</span><br></pre></td></tr></table></figure><p><code>post_path hello-world</code>的方式得到:<code>/2018-08-15-16107.html</code></p><p><code>post_link hello-world 世界你好！</code>的效果是:<code><a href="/publicBlog/2018-08-15-16107.html" title="世界你好！">世界你好！</a></code></p><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p><h2 id="插入代码文件"><a class="markdownIt-Anchor" href="#插入代码文件"></a> 插入代码文件</h2><p>先修改总的<code>_config.yml</code></p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">code_dir:</span> <span class="string">./</span> <span class="comment">#表示从source目录开始</span></span><br></pre></td></tr></table></figure><p>然后在要插入代码的md文件里相对<code>source</code>目录写文件路径</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</span><br></pre></td></tr></table></figure><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p><h2 id="插入markdown文件"><a class="markdownIt-Anchor" href="#插入markdown文件"></a> 插入markdown文件</h2><p>安装<code>hexo-include-markdown</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-include-markdown --save</span><br></pre></td></tr></table></figure><p>在总的<code>_config.yml</code>里添加</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">include_markdown:</span></span><br><span class="line"><span class="attr">  dir:</span> <span class="string">source/</span>   <span class="comment"># Base directory of template markdown</span></span><br><span class="line">  <span class="string">verbose</span> <span class="string">:</span> <span class="literal">true</span>          <span class="comment"># If you want to check the path of markdown that use &lt;!-- md --&gt; tag , please set the true.</span></span><br></pre></td></tr></table></figure><p>在md文件里添加相对于<code>source</code>的路径</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- md path/to/template.md --&gt;</span><br></pre></td></tr></table></figure><p><a href="https://github.com/tea3/hexo-include-markdown" target="_blank" rel="noopener">参考:hexo-include-markdown</a></p><h2 id="插入其他文件"><a class="markdownIt-Anchor" href="#插入其他文件"></a> 插入其他文件</h2><p>插入视频、图片等等，网上可收集的实在多，不赘述。归根结底，要么写Markdown语法，要么参考官网添加tag的方式，即如下网址：</p><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">hexo-tag-plugins英文说明</a></p><p><a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="noopener">hexo-tag-plugins中文说明</a></p>]]></content>
-    
-    <summary type="html">
-    
-      本文主要介绍如何在Hexo中插入自己博客或post的链接、Markdown文件、代码文件、图片、视频等等。
-    
-    </summary>
-    
-      <category term="技术构架" scheme="https://xiaotiandi.github.io/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
-    
-      <category term="个人博客" scheme="https://xiaotiandi.github.io/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="Hexo" scheme="https://xiaotiandi.github.io/publicBlog/tags/Hexo/"/>
-    
-      <category term="技术构架" scheme="https://xiaotiandi.github.io/publicBlog/tags/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
-    
-      <category term="个人博客" scheme="https://xiaotiandi.github.io/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="Markdown" scheme="https://xiaotiandi.github.io/publicBlog/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
     <title>hexo博客配置-代码块折叠</title>
     <link href="https://xiaotiandi.github.io/publicBlog/2018-09-19-1985df3b.html"/>
     <id>https://xiaotiandi.github.io/publicBlog/2018-09-19-1985df3b.html</id>
@@ -385,6 +355,36 @@
       <category term="个人博客" scheme="https://xiaotiandi.github.io/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="代码风格" scheme="https://xiaotiandi.github.io/publicBlog/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客配置-插入各类文件</title>
+    <link href="https://xiaotiandi.github.io/publicBlog/2018-09-19-dab4328f.html"/>
+    <id>https://xiaotiandi.github.io/publicBlog/2018-09-19-dab4328f.html</id>
+    <published>2018-09-19T04:00:00.000Z</published>
+    <updated>2018-09-19T13:44:53.974Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>本文所用的架构或思路参考该文：<a href="/publicBlog/2018-08-17-f4bcb518.html" title="hexo博客配置-主题管理与配置">hexo博客配置-主题管理与配置</a></p></blockquote><h2 id="插入自己的博客或post的链接"><a class="markdownIt-Anchor" href="#插入自己的博客或post的链接"></a> 插入自己的博客或post的链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_path slug %&#125;</span><br><span class="line">&#123;% post_link slug [title] %&#125;</span><br></pre></td></tr></table></figure><p><code>post_path hello-world</code>的方式得到:<code>/2018-08-15-16107.html</code></p><p><code>post_link hello-world 世界你好！</code>的效果是:<code><a href="/publicBlog/2018-08-15-16107.html" title="世界你好！">世界你好！</a></code></p><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p><h2 id="插入代码文件"><a class="markdownIt-Anchor" href="#插入代码文件"></a> 插入代码文件</h2><p>先修改总的<code>_config.yml</code></p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">code_dir:</span> <span class="string">./</span> <span class="comment">#表示从source目录开始</span></span><br></pre></td></tr></table></figure><p>然后在要插入代码的md文件里相对<code>source</code>目录写文件路径</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include_code [title] [lang:language] path/to/file %&#125;</span><br></pre></td></tr></table></figure><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">参考:hexo-tag-plugins</a></p><h2 id="插入markdown文件"><a class="markdownIt-Anchor" href="#插入markdown文件"></a> 插入markdown文件</h2><p>安装<code>hexo-include-markdown</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-include-markdown --save</span><br></pre></td></tr></table></figure><p>在总的<code>_config.yml</code>里添加</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">include_markdown:</span></span><br><span class="line"><span class="attr">  dir:</span> <span class="string">source/</span>   <span class="comment"># Base directory of template markdown</span></span><br><span class="line">  <span class="string">verbose</span> <span class="string">:</span> <span class="literal">true</span>          <span class="comment"># If you want to check the path of markdown that use &lt;!-- md --&gt; tag , please set the true.</span></span><br></pre></td></tr></table></figure><p>在md文件里添加相对于<code>source</code>的路径</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- md path/to/template.md --&gt;</span><br></pre></td></tr></table></figure><p><a href="https://github.com/tea3/hexo-include-markdown" target="_blank" rel="noopener">参考:hexo-include-markdown</a></p><h2 id="插入其他文件"><a class="markdownIt-Anchor" href="#插入其他文件"></a> 插入其他文件</h2><p>插入视频、图片等等，网上可收集的实在多，不赘述。归根结底，要么写Markdown语法，要么参考官网添加tag的方式，即如下网址：</p><p><a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">hexo-tag-plugins英文说明</a></p><p><a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="noopener">hexo-tag-plugins中文说明</a></p>]]></content>
+    
+    <summary type="html">
+    
+      本文主要介绍如何在Hexo中插入自己博客或post的链接、Markdown文件、代码文件、图片、视频等等。
+    
+    </summary>
+    
+      <category term="技术构架" scheme="https://xiaotiandi.github.io/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
+    
+      <category term="个人博客" scheme="https://xiaotiandi.github.io/publicBlog/categories/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="https://xiaotiandi.github.io/publicBlog/tags/Hexo/"/>
+    
+      <category term="技术构架" scheme="https://xiaotiandi.github.io/publicBlog/tags/%E6%8A%80%E6%9C%AF%E6%9E%84%E6%9E%B6/"/>
+    
+      <category term="个人博客" scheme="https://xiaotiandi.github.io/publicBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Markdown" scheme="https://xiaotiandi.github.io/publicBlog/tags/Markdown/"/>
     
   </entry>
   
